@@ -1,5 +1,9 @@
 // Assignment code here
 
+  // Main function for generating password 
+var generatePassword = function() {
+
+  
   // function for choosing password length 
 var getPasswordLength = function() {
   var length = Number(window.prompt("how long do you want your password? 8 - 128"));
@@ -19,6 +23,11 @@ var getPasswordLength = function() {
     }
     return length;
 };
+  // STORING PASSWORD LENGTH IN THIS VARIABLE
+  var length = getPasswordLength();
+
+
+
 
   // function for choosing uppercase criteria  
   var isUpperCase =  function() {
@@ -34,6 +43,11 @@ var getPasswordLength = function() {
       return false;
     }
   };
+  // STORING PASSWORD UPPERCASE CRITERIA HERE (TRUE OR FALSE) 
+  var upperCase = isUpperCase();
+
+
+
 
     // function for choosing lowercase criteria 
   var isLowerCase = function() {
@@ -49,6 +63,9 @@ var getPasswordLength = function() {
       return false;
     }
   };
+    // STORING PASSWORD LOWERCASE CRITERIA HERE (TRUE OR FALSE) 
+    var lowerCase = isLowerCase();
+
 
   // function for choosing special characters criteria  
   var isSpecialCharacters =  function() {
@@ -58,12 +75,14 @@ var getPasswordLength = function() {
       alert("Password will include special characters.");
       console.log("Include special characters");
       return true;
-    } if (!confirmSpecialCharacters) {
+    } else if (!confirmSpecialCharacters) {
       alert("Password WILL NOT include special characters!");
       console.log("Don't include special characters");
       return false;
     }
   };
+    // STORING PASSWORD SPECIAL CHARACTER HERE (TRUE OR FALSE) 
+    var specialCharacter = isSpecialCharacters();
 
     // function for validation of chosen criteria 
   var validateCriteria = function() {
@@ -82,26 +101,13 @@ var getPasswordLength = function() {
       };
     }
   };
+  // STORING ACCEPTABLE CRITERIA (TRUE OR FALSE) 
+  var validCriteria = validateCriteria()
 
 
-  // Main function for generating password 
-var generatePassword = function() {
-    // gets length of password
-    getPasswordLength()
 
-      // gets uppercase criteria 
-    isUpperCase()
-
-    // gets lowercase criteria 
-    isLowerCase()
-
-    // gets special characters criteria
-    isSpecialCharacters()
-
-    // checks to see if minimum requirements are met to generate password 
-    validateCriteria()
-
-    console.log(length)
+    // TESTING LENGTH VALUE HERE
+    // console.log(length)
     for (var i = 0; i <= length; i++) {
       console.log(i);
     }
