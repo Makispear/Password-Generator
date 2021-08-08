@@ -1,8 +1,6 @@
-// Assignment code here
-
+// Assignment code here:
   // Main function for generating password 
 var generatePassword = function() {
-
   
   // function for choosing password length 
 var getPasswordLength = function() {
@@ -27,11 +25,9 @@ var getPasswordLength = function() {
   var length = getPasswordLength();
 
 
-
-
   // function for choosing uppercase criteria  
   var isUpperCase =  function() {
-    var confirmUpperCase = window.confirm("Do you want to include uppercase letters (OK: yes Cancel: No)");
+    var confirmUpperCase = window.confirm("Do you want to include uppercase letters? (OK: yes Cancel: No)");
 
     if (confirmUpperCase) {
       alert("Password will include uppercase letters.");
@@ -47,11 +43,9 @@ var getPasswordLength = function() {
   var upperCase = isUpperCase();
 
 
-
-
     // function for choosing lowercase criteria 
   var isLowerCase = function() {
-    var confirmLowerCase = window.confirm("Do you want to include lowercase letters (OK: yes Cancel: No)");
+    var confirmLowerCase = window.confirm("Do you want to include lowercase letters? (OK: yes Cancel: No)");
 
     if (confirmLowerCase) {
       alert("Password will include lowercase letters.");
@@ -69,7 +63,7 @@ var getPasswordLength = function() {
 
   // function for choosing special characters criteria  
   var isSpecialCharacters =  function() {
-    var confirmSpecialCharacters = window.confirm("Do you want to include special characters (OK: yes Cancel: No)");
+    var confirmSpecialCharacters = window.confirm("Do you want to include special characters? (OK: yes Cancel: No)");
 
     if (confirmSpecialCharacters) {
       alert("Password will include special characters.");
@@ -84,20 +78,38 @@ var getPasswordLength = function() {
     // STORING PASSWORD SPECIAL CHARACTER HERE (TRUE OR FALSE) 
     var specialCharacter = isSpecialCharacters();
 
+      // function for choosing Numbers criteria  
+  var isNumbers =  function() {
+    var confirmNumbers = window.confirm("Do you want to include Numbers? (OK: yes Cancel: No)");
+
+    if (confirmNumbers) {
+      alert("Password will include numbers.");
+      console.log("Include numbers");
+      return true;
+    } else if (!confirmNumbers) {
+      alert("Password WILL NOT include numbers!");
+      console.log("Don't include numbers");
+      return false;
+    }
+  };
+    // STORING PASSWORD NUMBERS HERE (TRUE OR FALSE) 
+    var numbers = isNumbers();
+
     // function for validation of chosen criteria 
   var validateCriteria = function() {
-    if (isUpperCase() === true ||
-        isLowerCase() === true ||
-         isSpecialCharacters() === true) {
+    if (upperCase === true ||
+        lowerCase === true ||
+         specialCharacter === true ||
+         numbers === true) {
           window.alert(`a password with the accepted criteria will be generated!`)
     } else {
       window.alert("You need to include at least on of the followwing 1) uppercase letters 2) lowercase letters 3) special characters");
 
-      var again = window.confirm("do you want to try again or cancel?");
+      let again = window.confirm("do you want to try again or cancel?");
       if (again) {
         generatePassword()
       } else {
-        window.alert("Press Generate to begin!")
+        window.alert("OK! Feel free to Press Generate to begin!")
       };
     }
   };
@@ -106,14 +118,45 @@ var getPasswordLength = function() {
 
 
 
-    // TESTING LENGTH VALUE HERE
-    // console.log(length)
-    for (var i = 0; i <= length; i++) {
-      console.log(i);
+
+
+    // CODE FOR CREATING PASSWORD WITH ABOVE CRITERIA 
+    var generator = function(upperCase, lowerCase, specialCharacter, length, numbers) {
+
+  // POSSIBLE GENERATED CHARACTERS (CharCodes values) -----------------------------------
+        const upperCaseCharCodes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowerCaseCharCodes = "abcdefghijklmnopqrstuvwxyz";
+        const numberCharCodes = "0123456789";
+        const specialCharacterCharCodes = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+  // ------------------------------------------------
+
+  // assume all are true 
+
+      let potentialCharacters = "";
+      if (lowerCase) potentialCharacters = potentialCharacters.concat(lowerCaseCharCodes)
+      if (upperCase) potentialCharacters = potentialCharacters.concat(upperCaseCharCodes)
+      if (numbers) potentialCharacters = potentialCharacters.concat(numberCharCodes)
+      if (specialCharacter) potentialCharacters = potentialCharacters.concat(specialCharacterCharCodes);
+
+      console.log(potentialCharacters)
+      
+      var chosenCharacters = []
+      for (let i = 0; i < length; i++) {
+        var positionGenerator = potentialCharacters[Math.floor(Math.random() * potentialCharacters.length)]
+        chosenCharacters.push(positionGenerator)
+      }
+      return chosenCharacters.join('')
     }
 
 
+    
+
+    generator();
 }
+
+
+
 
 
 // Get references to the #generate element
