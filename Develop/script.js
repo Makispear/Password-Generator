@@ -121,7 +121,7 @@ var getPasswordLength = function() {
 
 
     // CODE FOR CREATING PASSWORD WITH ABOVE CRITERIA 
-    var generator = function(upperCase, lowerCase, specialCharacter, length, numbers) {
+    var generator = function() {
 
   // POSSIBLE GENERATED CHARACTERS (CharCodes values) -----------------------------------
         const upperCaseCharCodes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -129,9 +129,7 @@ var getPasswordLength = function() {
         const numberCharCodes = "0123456789";
         const specialCharacterCharCodes = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
-  // ------------------------------------------------
-
-  // assume all are true 
+  // --------------------------------------------------
 
       let potentialCharacters = "";
       if (lowerCase) potentialCharacters = potentialCharacters.concat(lowerCaseCharCodes)
@@ -139,20 +137,18 @@ var getPasswordLength = function() {
       if (numbers) potentialCharacters = potentialCharacters.concat(numberCharCodes)
       if (specialCharacter) potentialCharacters = potentialCharacters.concat(specialCharacterCharCodes);
 
-      console.log(potentialCharacters)
+      console.log(`Potential characters: ${potentialCharacters}`);
       
-      var chosenCharacters = []
+      var password = []
       for (let i = 0; i < length; i++) {
-        var positionGenerator = potentialCharacters[Math.floor(Math.random() * potentialCharacters.length)]
-        chosenCharacters.push(positionGenerator)
+        var positionGenerator = potentialCharacters[Math.floor(Math.random() * potentialCharacters.length)];
+        password.push(positionGenerator)
       }
-      return chosenCharacters.join('')
+      return password.join("")
     }
 
 
-    
-
-    generator();
+    return generator();
 }
 
 
