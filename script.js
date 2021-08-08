@@ -13,7 +13,7 @@ var getPasswordLength = function() {
       alert(`you chose ${length} characters`);
       // this is the length of the password 
       // var Passwordlength = length;
-      console.log(length);
+      console.log(`Your password will contain ${length} characters`);
       return length;
     } else {
       alert('Please type a valid number between 8 and 128!');
@@ -31,7 +31,7 @@ var getPasswordLength = function() {
 
     if (confirmUpperCase) {
       alert("Password will include uppercase letters.");
-      console.log("Include uppercase");
+      console.log(`Password will include - UPPERCASE letters`);
       return true;
     } if (!confirmUpperCase) {
       alert("Password WILL NOT include uppercase letters!");
@@ -49,7 +49,7 @@ var getPasswordLength = function() {
 
     if (confirmLowerCase) {
       alert("Password will include lowercase letters.");
-      console.log("Include lowercase");
+      console.log(`Password will include - lowercase letters`);
       return true;
     } if (!confirmLowerCase) {
       alert("Password WILL NOT include lowercase letters!");
@@ -67,7 +67,7 @@ var getPasswordLength = function() {
 
     if (confirmSpecialCharacters) {
       alert("Password will include special characters.");
-      console.log("Include special characters");
+      console.log(`Password will include - $pec!@| Ch@r@cter$`);
       return true;
     } else if (!confirmSpecialCharacters) {
       alert("Password WILL NOT include special characters!");
@@ -83,7 +83,7 @@ var getPasswordLength = function() {
     var confirmNumbers = window.confirm("Do you want to include Numbers? (OK: yes Cancel: No)");
 
     if (confirmNumbers) {
-      alert("Password will include numbers.");
+      alert(`Password will include - Numbers`);
       console.log("Include numbers");
       return true;
     } else if (!confirmNumbers) {
