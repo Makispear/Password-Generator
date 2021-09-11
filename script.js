@@ -4,11 +4,11 @@ var generatePassword = function() {
   
   // function for choosing password length 
 var getPasswordLength = function() {
-  var length = Number(window.prompt("how long do you want your password? 8 - 128"));
+  let length = Number(window.prompt("how long do you want your password? 8 - 128"));
 
-    if (length > 128 || length < 8 ) {
+    if (length > 128 || length < 8) {
       alert("Must include between 8 and 128 characters! try again.");
-      getPasswordLength()
+      return getPasswordLength()
     } else if (length <= 128 || length >= 8) {
       alert(`you chose ${length} characters`);
       // this is the length of the password 
@@ -19,8 +19,9 @@ var getPasswordLength = function() {
       alert('Please type a valid number between 8 and 128!');
       getPasswordLength();
     }
-    return length;
+    return length
 };
+
   // STORING PASSWORD LENGTH IN THIS VARIABLE
   var length = getPasswordLength();
 
